@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Skilltellect</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+<!--  <meta http-equiv="refresh" content="3" />-->
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename= 'Images/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename= 'Images/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Lumia - v4.3.0
+  * Template URL: https://bootstrapmade.com/lumia-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+</head>
+
+
+
+<body>
+    
+    
+      <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo me-auto">
+        <!-- <h1><a href="">Lumia</a></h1>-->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="/"><img src="/static/Images/logo.jpg" alt="Skilltellect" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/config">Configurator</a></li>
+          <li><a class="nav-link scrollto active" href="/debug">Debugging</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+
+  </header><!-- End Header -->
+
+  <div class="container">
+
+  <p><label for="textarea"> Debbuging information: </label></p>
+  <textarea id="textarea" name="textarea" readonly cols="50" rows="10"></textarea>
+  <div id="images"></div>>
+  <form method="post" action="/debug">
+    <p><input id="start-btn" type="submit" name="command" value="lockoff" class="button-label btn-green"/></p>
+  </form>
+  </div>
+
+  <script>
+    setInterval(loadDoc2,1000);
+    function loadDoc2() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("images").innerHTML =
+          this.responseText;
+        }
+      };
+      xhttp.open("GET", "{{ url_for('static', filename='ajax_img_visualization.txt') }}", true);
+      xhttp.send();
+    }
+</script>
+
+  <script>
+  setInterval(loadDoc,1000);
+  function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("textarea").innerHTML =
+        this.responseText;
+      }
+    };
+    xhttp.open("GET", "{{ url_for('static', filename='ajax_info.txt') }}", true);
+    xhttp.send();
+  }
+  </script>
+    
+<!-- ======= Footer ======= -->
+  <footer id="footer">
+   
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+          <img src="/static/Images/support.png" style="width: 40px;">
+        <div class="copyright">
+          
+        </div>
+        <div class="credits">
+         <a href="mailto:support@skilltellect.ai">support@skilltellect.ai</a>
+        </div>
+      </div>
+      
+     
+      
+    </div>
+
+  </footer><!-- End Footer -->
+<script src="/static/js/main.js"></script>
+    
+</body>
+

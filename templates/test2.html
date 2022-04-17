@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p><img id="corners" src="/static/Images/mask.jpeg" width="10%"></p>
+<script>
+    window.onload = function(){
+    var id_images = ['corners'], image, even = true, imageWidth;
+    for(var i=0; i< id_images.length; i++){
+        image = document.getElementById(id_images[i]);
+        imageWidth = image.clientWidth;
+
+        image.onclick = function(even, imageWidth){
+        return function(){
+            if (even) {
+                even = false;
+                this.style.width = outerWidth + "px";
+            } else {
+                this.style.width = imageWidth + "px";
+                even = true;
+            }
+        }
+        }(even,imageWidth);
+    }
+};
+  </script>
+
+</body>
+</html>

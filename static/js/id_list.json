@@ -1,0 +1,8 @@
+<div id="images">
+  <p><label>Detected corners:</label></p>
+  <p><img id="corners" src="/static/Images/mask.jpeg" width="100%"></p>
+  <p><label>Masks with all detected metal parts:</label></p>
+  <p><img id="mask" src="/static/Images/mask.jpeg" width="100%"></p>
+  <p><label>Generated trajectory:</label></p>
+  <p><img id="trajectory" src="/static/Images/trajectory.jpeg" width="100%"></p>
+</div>

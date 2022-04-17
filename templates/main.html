@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img id="image" src="{{ PARAMS['org_image_path'] }}" usemap="#masks_map">
+            <map name="masks_map">
+                {% for idx, contour in PARAMS['image_segments'].items() %}
+                    <area id="{{ idx }}" shape="poly" coords="{{ contour }}" href="/?idx={{ idx }}">
+                {% endfor %}
+            </map>
+    <form method="post" action="/">
+        <input type="submit" name="command" value="next"/></p>
+    </form>
+</body>
+
+</script>
+
+</html>

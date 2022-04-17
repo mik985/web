@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<!--<head>-->
+<!--    &lt;!&ndash; Vendor CSS Files &ndash;&gt;-->
+<!--  <link href="/static/css/style_old.css" rel="stylesheet">-->
+<!--</head>-->
+
+<body>
+
+<p><label for="textarea"> Debbuging information: </label></p>
+<textarea id="textarea" name="textarea" readonly></textarea>
+
+<div id="images"></div>>
+
+<progress id="progress-bar" value="0" max="100"></progress>
+
+<script>
+  setInterval(loadDoc3,1000);
+  function loadDoc3() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("progress-bar").value =
+        this.responseText;
+      }
+    };
+    xhttp.open("GET", "{{ url_for('static', filename='ajax_progress.txt') }}", true);
+    xhttp.send();
+  }
+  </script>
+
+<!--<p><label>Detected corners:</label></p>-->
+<!--<p><img id="corners" src="/static/Images/mask.jpeg" width="10%"></p>-->
+<!--<p><label>Masks with all detected metal parts:</label></p>-->
+<!--<p><img id="mask" src="/static/Images/mask.jpeg" width="10%"></p>-->
+<!--<p><label>Generated trajectory:</label></p>-->
+<!--<p><img id="trajectory" src="/static/Images/trajectory.jpeg" width="10%"></p>-->
+
+<!--<div id="images">-->
+<!--  <p><label>Detected corners:</label></p>-->
+<!--  <p><img id="corners" src="/static/Images/mask.jpeg" width="10%"></p>-->
+<!--  <p><label>Masks with all detected metal parts:</label></p>-->
+<!--  <p><img id="mask" src="/static/Images/mask.jpeg" width="10%"></p>-->
+<!--  <p><label>Generated trajectory:</label></p>-->
+<!--  <p><img id="trajectory" src="/static/Images/trajectory.jpeg" width="10%"></p>-->
+<!--</div>-->
+
+<script>
+    setInterval(loadDoc2,1000);
+    function loadDoc2() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("images").innerHTML =
+          this.responseText;
+        }
+      };
+      xhttp.open("GET", "{{ url_for('static', filename='test.txt') }}", true);
+      xhttp.send();
+    }
+</script>
+
+<!--<script>-->
+<!--    setInterval(loadDoc2,1000);-->
+<!--    function loadDoc2() {-->
+<!--      var xhttp = new XMLHttpRequest();-->
+<!--      xhttp.onreadystatechange = function() {-->
+<!--        if (this.readyState == 4 && this.status == 200) {-->
+<!--          document.getElementById("images").innerHTML =-->
+<!--          this.responseText;-->
+<!--        }-->
+<!--      };-->
+<!--      xhttp.open("GET", "{{ url_for('static', filename='ajax_img_visualization.txt') }}", true);-->
+<!--      xhttp.send();-->
+<!--    }-->
+<!--</script>-->
+
+<!--<p><img id="corners" src="/static/Images/mask.jpeg" width="10%"></p>-->
+<!--<div id="images"></div>-->
+<!--<div id="images"><p><img id="corners" src="/static/Images/mask.jpeg" width="10%"></p></div>-->
+
+<!--<script>-->
+<!--  function show() {-->
+<!--      var img = document.getElementById("corners");-->
+<!--      imageWidth = image.clientWidth;-->
+<!--      img.style.width = "100%";-->
+<!--  }-->
+<!--</script>-->
+
+<!--<script>-->
+<!--     window.onload = function(){-->
+<!--&lt;!&ndash;    ['mask', 'trajectory', 'corners']&ndash;&gt;-->
+<!--    var id_images = ['mask', 'trajectory', 'corners'], image, even = true, imageWidth;-->
+<!--    for(var i=0; i< id_images.length; i++){-->
+<!--        image = document.getElementById(id_images[i]);-->
+<!--        imageWidth = image.clientWidth;-->
+
+<!--        image.onclick = function(even, imageWidth){-->
+<!--        return function(){-->
+<!--            if (even) {-->
+<!--                even = false;-->
+<!--                this.style.width = outerWidth + "px";-->
+<!--            } else {-->
+<!--                this.style.width = imageWidth + "px";-->
+<!--                even = true;-->
+<!--            }-->
+<!--        }-->
+<!--        }(even,imageWidth);-->
+<!--    }-->
+<!--};-->
+<!--</script>-->
+
+<!--<script>-->
+<!--    window.onload = function(){-->
+<!--&lt;!&ndash;    ['mask', 'trajectory', 'corners']&ndash;&gt;-->
+<!--    var id_images = ['corners'], image, even = true, imageWidth;-->
+<!--    for(var i=0; i< id_images.length; i++){-->
+<!--        image = document.getElementById(id_images[i]);-->
+<!--        imageWidth = image.clientWidth;-->
+
+<!--        image.onclick = function(even, imageWidth){-->
+<!--        return function(){-->
+<!--            if (even) {-->
+<!--                even = false;-->
+<!--                this.style.width = outerWidth + "px";-->
+<!--            } else {-->
+<!--                this.style.width = imageWidth + "px";-->
+<!--                even = true;-->
+<!--            }-->
+<!--        }-->
+<!--        }(even,imageWidth);-->
+<!--    }-->
+<!--};-->
+<!--</script>-->
+
+<script>
+    setInterval(loadDoc,1000);
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("textarea").innerHTML =
+          this.responseText;
+        }
+      };
+      xhttp.open("GET", "{{ url_for('static', filename='ajax_info.txt') }}", true);
+      xhttp.send();
+    }
+</script>
+
+<!--<script>-->
+<!--    setInterval(loadDoc,1000);-->
+<!--    function loadDoc() {-->
+<!--      var xhttp = new XMLHttpRequest();-->
+<!--      xhttp.onreadystatechange = function() {-->
+<!--        if (this.readyState == 4 && this.status == 200) {-->
+<!--          document.getElementById("textarea").innerHTML =-->
+<!--          this.responseText;-->
+<!--        }-->
+<!--      };-->
+<!--      xhttp.open("GET", "{{ url_for('static', filename='ajax_info.txt') }}", true);-->
+<!--      xhttp.send();-->
+<!--    }-->
+<!--</script>-->
+
+</body>
+</html>

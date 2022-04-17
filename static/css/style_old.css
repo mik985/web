@@ -1,0 +1,31 @@
+img.foto_smal-big {
+  	cursor: pointer;
+	border: none; /* Убираем рамку */
+	margin-top:	0;
+	margin-bottom:	10px;
+	margin-left:	15px;
+	margin-right:	15px;
+	float: left;
+	width:auto;
+	height:159px;
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+}
+img.foto_smal-big:hover {
+  display: block;
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 99%;
+  max-height: 99%;
+  border: solid rgba(210,210,210,.4);
+  border-width: 100vh 100vw;
+  cursor: zoom-out;
+}
+:not(:active) > img.foto_smal-big:not(:hover), img.foto_smal-big:active {
+  pointer-events: none;
+}
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Skilltellect</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  {% if pr_running %}
+  <meta http-equiv="refresh" content="15" />
+  {% endif %}
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename= 'Images/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename= 'Images/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Lumia - v4.3.0
+  * Template URL: https://bootstrapmade.com/lumia-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+
+
+<body>
+    
+    
+      <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo me-auto">
+        <!-- <h1><a href="">Lumia</a></h1>-->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="/"><img src="/static/Images/logo.jpg" alt="Skilltellect" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/config">Configurator</a></li>
+          <li><a class="nav-link scrollto" href="/debug">Debugging</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <script>
+  setInterval(loadDoc3,1000);
+  function loadDoc3() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("progress-bar").value =
+        this.responseText;
+      }
+    };
+    xhttp.open("GET", "{{ url_for('static', filename='ajax_progress.txt') }}", true);
+    xhttp.send();
+  }
+  </script>
+
+  <main id="main">   
+      <div class="container section-title">
+        {% if pr_running %}
+          <h1>Kawasaki {{ RobotModel }} is working</h1>
+          <progress id="progress-bar" value="0" max="100"></progress>
+            <form method="post" action="/">
+
+              {% if pause %}
+                  <p><input type="submit" name="command" value="Continue" class="button-label btn-red"/></p>
+              {% else %}
+                  <p><input id="start-btn" type="submit" name="command" value="Stop" class="button-label btn-red"/>
+                  <input type="submit" name="command" value="Pause" class="button-label btn-red"/></p>
+              {% endif %}
+            </form>
+        {% else %}
+          {% if RobotModel %}
+            <h1>Kawasaki {{ RobotModel }} is ready</h1>
+            <form method="post" action="/">
+              <h3>Processing method</h3>
+              <div class="st-radios">
+                <input class="hidden" type="radio" id="pm-1" name="option" value="1">
+                <label for="pm-1" class="button-label" onclick="document.getElementById('start-btn').style.display = '';">All</label>
+                <input class="hidden" type="radio" id="pm-2" name="option" value="2">
+                <label for="pm-2" class="button-label" onclick="document.getElementById('start-btn').style.display = '';">Rust</label>
+                <input class="hidden" type="radio" id="pm-3" name="option" value="3">
+                <label for="pm-3" class="button-label" onclick="document.getElementById('start-btn').style.display = '';">Clear parts edges</label>
+                <input class="hidden" type="radio" id="pm-4" name="option" value="4">
+                <label for="pm-4" class="button-label" onclick="document.getElementById('start-btn').style.display = '';">Clear parts without edges</label>
+              </div>
+              <p><input id="start-btn" type="submit" name="command" value="Start" class="button-label btn-green" style="display:none"/></p>
+              <p><input id="home" type="submit" name="command" value="home" class="button-label btn-green"/>
+              <input id="check_disk" type="submit" name="command" value="check_disk" class="button-label btn-green"/></p>
+
+            </form>
+          {% else %}
+          <h1>Robot not found</h1>
+          <p><button class="button-label btn-green" onclick="location.reload()">Refresh</button></p>
+          {% endif %}
+        {% endif %}
+      </div>
+
+
+
+
+      
+  </main>
+    
+<!-- ======= Footer ======= -->
+  <footer id="footer">
+   
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+          <img src="/static/Images/support.png" style="width: 40px;">
+        <div class="copyright">
+          
+        </div>
+        <div class="credits">
+         <a href="mailto:support@skilltellect.ai">support@skilltellect.ai</a>
+        </div>
+      </div>
+      
+     
+      
+    </div>
+
+  </footer><!-- End Footer -->
+<script src="/static/js/main.js"></script>
+    
+</body>
+

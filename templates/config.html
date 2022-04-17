@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Skilltellect</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename= 'Images/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename= 'Images/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/css/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Lumia - v4.3.0
+  * Template URL: https://bootstrapmade.com/lumia-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+
+
+<body>
+    
+    
+      <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo me-auto">
+        <!-- <h1><a href="">Lumia</a></h1>-->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="/"><img src="/static/Images/logo.jpg" alt="Skilltellect" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto  active" href="/config">Configurator</a></li>
+          <li><a class="nav-link scrollto" href="/debug">Debugging</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+  
+    
+  <main id="main">   
+      <section class="what-we-do">
+          <div class="container">
+              
+              
+              
+              
+              
+        <form method="post" action="/config">
+        <h1>Configurator</h1>
+        <p><label for="height">Enter free hight (mm):</label>
+        <input type="number" id="height" name="height" min="-1000" max="1000" value="{{ robot_configuration['height'] }}" step="0.01"></p>
+        <p><label for="working_height">Enter working hight (mm):</label>
+        <input type="number" id="working_height" name="working_height" min="-1000" max="1000" value="{{ robot_configuration['working_height'] }}" step="0.01"></p>
+        <p><label for="threshold_corr">Enter unet binarization threshold:</label>
+        <input type="number" id="threshold_corr" name="threshold_corr" min="0" max="255" value="{{ robot_configuration['threshold_corr'] }}" step="1"></p>
+        <p><label for="threshold_scores_rcnn">Enter probability threshold of metal belonging:</label>
+        <input type="number" id="threshold_scores_rcnn" name="threshold_scores_rcnn" min="0" max="1" value="{{ robot_configuration['threshold_scores_rcnn'] }}" step="0.01"></p>
+        <p><label for="threshold_rcnn">Enter rcnn binarization threshold:</label>
+        <input type="number" id="threshold_rcnn" name="threshold_rcnn" min="0" max="255" value="{{ robot_configuration['threshold_rcnn'] }}" step="1"></p>
+        <p><label for="distance">Enter distance threshold for low passing (mm):</label>
+        <input type="number" id="distance" name="distance" min="0" max="100" value="{{ robot_configuration['distance'] }}" step="1"></p>
+        <p><label for="robot_ip">Robot IP address:</label>
+        <input id="robot_ip" name="robot_ip" min="1" max="100" value="{{ robot_configuration['robot_ip'] }}" step="1"></p>
+        <p><label for="brush_for_part_inner_area">Enter brush for part inner area (mm):</label>
+        <input type="number" id="brush_for_part_inner_area" name="brush_for_part_inner_area" min="1" max="100" value="{{ robot_configuration['brush_for_part_inner_area'] }}" step="1"></p>
+        <p><label for="brush_for_part_edge_area">Enter brush for part edge area (mm):</label>
+        <input type="number" id="brush_for_part_edge_area" name="brush_for_part_edge_area" min="1" max="100" value="{{ robot_configuration['brush_for_part_edge_area'] }}" step="1"></p>
+        <p><label for="ident_for_part_edge_area">Enter size of edge identation for part edge area (mm):</label>
+        <input type="number" id="ident_for_part_edge_area" name="ident_for_part_edge_area" min="0" max="1000" value="{{ robot_configuration['ident_for_part_edge_area'] }}" step="1"></p>
+        <p><label for="ident_for_part_inner_area">Enter size of edge identation for part inner area (mm):</label>
+        <input type="number" id="ident_for_part_inner_area" name="ident_for_part_inner_area" min="0" max="1000" value="{{ robot_configuration['ident_for_part_inner_area'] }}" step="1"></p>
+
+        <p><label for="work_speed_edge_area">Enter working speed for part edge passing (mm/sec):</label>
+        <input type="number" id="work_speed_edge_area" name="work_speed_edge_area" min="1" max="10000" value="{{ robot_configuration['work_speed_edge_area'] }}" step="1"></p>
+        <p><label for="work_speed_inner_area">Enter working speed for part meat passing (mm/sec):</label>
+        <input type="number" id="work_speed_inner_area" name="work_speed_inner_area" min="1" max="10000" value="{{ robot_configuration['work_speed_inner_area'] }}" step="1"></p>
+        <p><label for="free_speed">Enter speed for relocation (mm/sec):</label>
+        <input type="number" id="free_speed" name="free_speed" min="1" max="10000" value="{{ robot_configuration['free_speed'] }}" step="1"></p>
+
+        <p><label for="server_ip">Enter server_ip for NN prediction:</label>
+        <input id="server_ip" name="server_ip" value="{{ robot_configuration['server_ip'] }}"></p>
+
+        <p><label>Choose camera:</label>
+        <select name="camera_type">
+          <option  value="hicvision_vpn">Hicvision camera</option>
+          <option  value="jetson_big">Arducam HQ camera</option>
+          <option  value="jetson_small">Raspberry Pi Camera Module 2</option>
+          <option  value="usb_camera">Avermedia USB camera</option>
+          <option  value="rasp_sci">Raspberry Pi CSI camera</option>
+          <option  value="not_use">Use premade photo</option>
+        </select></p>
+
+        <p><label>Choose camera position relative to robot:</label>
+        <select name="camera_position">
+          <option  value="front"> front </option>
+          <option  value="right"> right </option>
+          <option  value="left"> left </option>
+          <option  value="behind"> behind </option>
+        </select></p>
+
+        <p><label for="turn_on_arm">Turn on arm (1 - yes else - no):</label>
+        <input type="number" id="turn_on_arm" name="turn_on_arm" min="0" max="1" value="{{ robot_configuration['turn_on_arm'] }}" step="1"></p>
+        <p><label for="turn_on_grinder">Turn on grinder (1 - yes else - no):</label>
+        <input type="number" id="turn_on_grinder" name="turn_on_grinder" min="0" max="1" value="{{ robot_configuration['turn_on_grinder'] }}" step="1"></p>
+        <p><label for="turn_on_magnetic_table">Turn on magnetic table (1 - yes else - no):</label>
+        <input type="number" id="turn_on_magnetic_table" name="turn_on_magnetic_table" min="0" max="1" value="{{ robot_configuration['turn_on_magnetic_table'] }}" step="1"></p>
+        <p><label for="turn_on_pneumatic_controller">Turn on pneumatic controller (1 - yes else - no):</label>
+        <input type="number" id="turn_on_pneumatic_controller" name="turn_on_pneumatic_controller" min="0" max="1" value="{{ robot_configuration['turn_on_pneumatic_controller'] }}" step="1"></p>
+
+        <h4>HOME settings</h4>
+        <p><label for="x_home">Enter x of HOME position:</label>
+        <input type="number" id="x_home" name="x_home" min="-10000" max="10000" value="{{ robot_configuration['home'][0] }}" step="1"></p>
+        <p><label for="y_home">Enter y of HOME position:</label>
+        <input type="number" id="y_home" name="y_home" min="-10000" max="10000" value="{{ robot_configuration['home'][1] }}" step="1"></p>
+        <p><label for="z_home">Enter z of HOME position:</label>
+        <input type="number" id="z_home" name="z_home" min="-10000" max="10000" value="{{ robot_configuration['home'][2] }}" step="1"></p>
+        <p><label for="O_home">Enter O of HOME position:</label>
+        <input type="number" id="O_home" name="O_home" min="-10000" max="10000" value="{{ robot_configuration['home'][3] }}" step="1"></p>
+        <p><label for="A_home">Enter A of HOME position:</label>
+        <input type="number" id="A_home" name="A_home" min="-10000" max="10000" value="{{ robot_configuration['home'][4] }}" step="1"></p>
+        <p><label for="T_home">Enter T of HOME position:</label>
+        <input type="number" id="T_home" name="T_home" min="-10000" max="10000" value="{{ robot_configuration['home'][5] }}" step="1"></p>
+
+        <h4>intermediate position settings</h4>
+        <p><label for="x_inter">Enter x of such position:</label>
+        <input type="number" id="x_inter" name="x_inter" min="-10000" max="10000" value="{{ robot_configuration['intermediate_position'][0] }}" step="1"></p>
+        <p><label for="y_inter">Enter y of such position:</label>
+        <input type="number" id="y_inter" name="y_inter" min="-10000" max="10000" value="{{ robot_configuration['intermediate_position'][1] }}" step="1"></p>
+        <p><label for="z_inter">Enter z of such position:</label>
+        <input type="number" id="z_inter" name="z_inter" min="-10000" max="10000" value="{{ robot_configuration['intermediate_position'][2] }}" step="1"></p>
+        <p><label for="O_inter">Enter O of such position:</label>
+        <input type="number" id="O_inter" name="O_inter" min="-10000" max="10000" value="{{ robot_configuration['intermediate_position'][3] }}" step="1"></p>
+        <p><label for="A_inter">Enter A of such position:</label>
+        <input type="number" id="A_inter" name="A_inter" min="-10000" max="10000" value="{{ robot_configuration['intermediate_position'][4] }}" step="1"></p>
+        <p><label for="T_inter">Enter T of such position:</label>
+        <input type="number" id="T_inter" name="T_inter" min="-10000" max="10000" value="{{ robot_configuration['intermediate_position'][5] }}" step="1"></p>
+
+        <h4>Position for making photo settings</h4>
+        <p><label for="x_photo_position">Enter x of such position:</label>
+        <input type="number" id="x_photo_position" name="x_photo_position" min="-10000" max="10000" value="{{ robot_configuration['work_space_photo_position'][0] }}" step="1"></p>
+        <p><label for="y_photo_position">Enter y of such position:</label>
+        <input type="number" id="y_photo_position" name="y_photo_position" min="-10000" max="10000" value="{{ robot_configuration['work_space_photo_position'][1] }}" step="1"></p>
+        <p><label for="z_photo_position">Enter z of such position:</label>
+        <input type="number" id="z_photo_position" name="z_photo_position" min="-10000" max="10000" value="{{ robot_configuration['work_space_photo_position'][2] }}" step="1"></p>
+        <p><label for="O_photo_position">Enter O of such position:</label>
+        <input type="number" id="O_photo_position" name="O_photo_position" min="-10000" max="10000" value="{{ robot_configuration['work_space_photo_position'][3] }}" step="1"></p>
+        <p><label for="A_photo_position">Enter A of such position:</label>
+        <input type="number" id="A_photo_position" name="A_photo_position" min="-10000" max="10000" value="{{ robot_configuration['work_space_photo_position'][4] }}" step="1"></p>
+        <p><label for="T_photo_position">Enter T of such position:</label>
+        <input type="number" id="T_photo_position" name="T_photo_position" min="-10000" max="10000" value="{{ robot_configuration['work_space_photo_position'][5] }}" step="1"></p>
+
+        <h4>Position for check disk settings</h4>
+        <p><label for="x_disk_check">Enter x of such position:</label>
+        <input type="number" id="x_disk_check" name="x_disk_check" min="-10000" max="10000" value="{{ robot_configuration['check_disk_position'][0] }}" step="1"></p>
+        <p><label for="y_disk_check">Enter y of such position:</label>
+        <input type="number" id="y_disk_check" name="y_disk_check" min="-10000" max="10000" value="{{ robot_configuration['check_disk_position'][1] }}" step="1"></p>
+        <p><label for="z_disk_check">Enter z of such position:</label>
+        <input type="number" id="z_disk_check" name="z_disk_check" min="-10000" max="10000" value="{{ robot_configuration['check_disk_position'][2] }}" step="1"></p>
+        <p><label for="O_disk_check">Enter O of such position:</label>
+        <input type="number" id="O_disk_check" name="O_disk_check" min="-10000" max="10000" value="{{ robot_configuration['check_disk_position'][3] }}" step="1"></p>
+        <p><label for="A_disk_check">Enter A of such position:</label>
+        <input type="number" id="A_disk_check" name="A_disk_check" min="-10000" max="10000" value="{{ robot_configuration['check_disk_position'][4] }}" step="1"></p>
+        <p><label for="T_disk_check">Enter T of such position:</label>
+        <input type="number" id="T_disk_check" name="T_disk_check" min="-10000" max="10000" value="{{ robot_configuration['check_disk_position'][5] }}" step="1"></p>
+
+        <h4>CORNERS positions settings</h4>
+
+        <p><label for="x_edge_1">top left corner: x:</label>
+        <input type="number" id="x_edge_1" name="x_edge_1" min="-10000" max="10000" value="{{ robot_configuration['corners_robot'][0][1] }}" step="0.001">
+        <label for="y_edge_1">y:</label>
+        <input type="number" id="y_edge_1" name="y_edge_1" min="-10000" max="10000" value="{{ robot_configuration['corners_robot'][0][0] }}" step="0.001"></p>
+
+        <p><label for="x_edge_2">top right corner: x:</label>
+        <input type="number" id="x_edge_2" name="x_edge_2" min="-10000" max="10000" value="{{ robot_configuration['corners_robot'][1][1] }}" step="0.001">
+        <label for="y_edge_2">y:</label>
+        <input type="number" id="y_edge_2" name="y_edge_2" min="-10000" max="10000" value="{{ robot_configuration['corners_robot'][1][0] }}" step="0.001"></p>
+
+        <p><label for="x_edge_3">bottom right corner: x:</label>
+        <input type="number" id="x_edge_3" name="x_edge_3" min="-10000" max="10000" value="{{ robot_configuration['corners_robot'][2][1] }}" step="0.001">
+        <label for="y_edge_3">y:</label>
+        <input type="number" id="y_edge_3" name="y_edge_3" min="-10000" max="10000" value="{{ robot_configuration['corners_robot'][2][0] }}" step="0.001"></p>
+
+        <p><label for="x_edge_4">bottom left corner: x:</label>
+        <input type="number" id="x_edge_4" name="x_edge_4" min="-10000" max="10000" value="{{ robot_configuration['corners_robot'][3][1] }}" step="0.001">
+        <label for="y_edge_4">y:</label>
+        <input type="number" id="y_edge_4" name="y_edge_4" min="-10000" max="10000" value="{{ robot_configuration['corners_robot'][3][0] }}" step="0.001"></p>
+
+
+        <h4>END_EFFECTOR orientation settings</h4>
+        <p><label for="O">Enter O:</label>
+        <input type="number" id="O" name="O" min="-10000" max="10000" value="{{ robot_configuration['orientation'][0] }}" step="0.001"></p>
+        <p><label for="A">Enter A:</label>
+        <input type="number" id="A" name="A" min="-10000" max="10000" value="{{ robot_configuration['orientation'][1] }}" step="0.001"></p>
+        <p><label for="T">Enter T:</label>
+        <input type="number" id="T" name="T" min="-10000" max="10000" value="{{ robot_configuration['orientation'][2] }}" step="0.001"></p>
+
+        <p><label for="qr_camera">Corners:</label> </p>
+        <p><img id="qr_camera" src="{{ img_src }}" width="10%"></p>
+
+        {% if not script_running %}
+            <p><input type="submit" name="command" value="Detect corners" class="button-label btn-green"/></p>
+            <p><input type="submit" name="command" value="Apply" class="button-label btn-green"/></p>
+        {% endif %}
+    </form>
+              
+              
+              
+              
+              
+              
+              
+          </div>
+      </section>
+
+
+
+      
+  </main>
+    
+<!-- ======= Footer ======= -->
+  <footer id="footer">
+   
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+          <img src="/static/Images/support.png" style="width: 40px;">
+        <div class="copyright">
+          
+        </div>
+        <div class="credits">
+         <a href="mailto:support@skilltellect.ai">support@skilltellect.ai</a>
+        </div>
+      </div>
+      
+     
+      
+    </div>
+
+  </footer><!-- End Footer -->
+<script>
+     window.onload = function(){
+    var image, even = true, imageWidth;
+    image = document.getElementById('qr_camera');
+    imageWidth = image.clientWidth;
+
+    image.onclick = function(even, imageWidth){
+    return function(){
+        if (even) {
+            even = false;
+            this.style.width = "100%";
+        } else {
+            this.style.width = imageWidth + "px";
+            even = true;
+        }
+    }
+    }(even,imageWidth);
+};
+</script>
+<script src="/static/js/main.js"></script>
+    
+</body>
+
